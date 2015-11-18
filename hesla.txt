@@ -1,0 +1,7 @@
+matus:jb14
+hanka:52:StringNaOtestovanieSaltu9845!2#
+samo:sam:java.security.SecureRandom@67d6a352
+pato:pat:[B@67d6a352
+stano:stan:[B@2861e6e4
+martin:mar123:[B@68a99817
+-2e0adbc2f8e1db1dfcd529f321c20418af66f5bb
