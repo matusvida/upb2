@@ -7,6 +7,9 @@ package security;///////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.StringTokenizer;
 
 import security.Database;
@@ -27,10 +30,35 @@ public class Login {
             /*
             *   Pred porovanim hesiel je nutne k heslu zadanemu od uzivatela pridat prislusny salt z databazy a nasledne tento retazec zahashovat.
             */
-            boolean rightPassword = st.nextToken().equals(heslo);
-            if (!rightPassword)    
+            /* HASH*/
+            String hashedDbPassword = "";
+            for (int index = 0; index < st.countTokens()-1; index++){
+                hashedDbPassword = st.nextToken();
+            }
+            System.out.println("nacitanie hash password:"+hashedDbPassword + "<<");
+            String salt = st.nextToken();
+            System.out.println(salt);
+
+            MessageDigest msg = null;
+            try {
+                msg = MessageDigest.getInstance("SHA");
+                msg.update((heslo + salt).getBytes());
+            }
+            catch(NoSuchAlgorithmException e){
+                e.printStackTrace();
+            }
+            String encryptedPassword = (new BigInteger(msg.digest()).toString(16));
+            System.out.println(("encBLG:"+new BigInteger(msg.digest()).toString(16)));
+
+            System.out.println("encrypt"+encryptedPassword);
+
+            ////dorobit !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            boolean rightPassword = encryptedPassword.equals(hashedDbPassword);
+            System.out.println("hashed:"+hashedDbPassword);
+            if (!rightPassword)
                 return new MyResult(false, "Nespravne heslo.");
         }
         return new MyResult(true, "Uspesne prihlasenie.");
     }
+
 }

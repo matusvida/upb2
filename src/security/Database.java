@@ -34,20 +34,23 @@ public class Database {
     }
 
     // Register new user
-    protected static MyResult add(String fileName, String text) throws IOException{ 
-        if(exist(fileName, text))
+    protected static MyResult add(String fileName, String name, String password, String salt) throws IOException{
+        if(exist(fileName, name))
             return new MyResult(false, "Meno uz existuje");
         MessageDigest msg = null;
+        String hashPassword = password + salt;
         try {
             msg = MessageDigest.getInstance("SHA");
-            msg.update((text).getBytes());
+            msg.update((hashPassword).getBytes());
         }
         catch(NoSuchAlgorithmException e){
             e.printStackTrace();
         }
         String encryptedPassword = (new BigInteger(msg.digest()).toString(16));
+        System.out.println(("encBIG:"+new BigInteger(msg.digest()).toString(16)));
+        String result = name+":"+encryptedPassword+":"+salt;
         FileWriter fw = new FileWriter(fileName, true);
-        fw.write(encryptedPassword + System.lineSeparator());
+        fw.write(result + System.lineSeparator());
         fw.close();    
         return new MyResult(true, "");
     }

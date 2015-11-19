@@ -8,7 +8,6 @@ package security;///////////////////////////////////////////////////////////////
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Random;
-
 import security.Database;
 import security.Database.MyResult;
 
@@ -24,7 +23,7 @@ public class Registration {
             *   Salt sa obvykle uklada ako tretia polozka v tvare [meno]:[heslo]:[salt].
             */
             byte[] salt = new byte[32];
-            Database.add("hesla.txt", meno + ":" + heslo + ":" + salt);
+            Database.add("hesla.txt", meno, heslo, salt.toString());
         }
         return new MyResult(true, "");
     }

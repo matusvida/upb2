@@ -1,7 +1,9 @@
 matus:jb14
 hanka:52:StringNaOtestovanieSaltu9845!2#
 samo:sam:java.security.SecureRandom@67d6a352
-pato:pat:[B@67d6a352
-stano:stan:[B@2861e6e4
-martin:mar123:[B@68a99817
--2e0adbc2f8e1db1dfcd529f321c20418af66f5bb
+pato:-7c4141e72e4f00dd685230875a79cbcc1974a6b1:[B@36119d3
+stan:-31acf08a6fcbb1445e364f3d2b4bda360ebe1034:[B@2da4ad8f
+miso:-68dfc41eb824b340340ea476fe749f53ef2632a9:[B@36119d3
+jan:790b2c73d002acb9119ea5e5b7d419cf9c61da45:[B@59f5f63c
+tom:-7b8da6e6595ccad46d2c5d0be56c883130238e95:[B@59f5f63c
+pet:5814f5679b7602341cc147776adecef9be7592ca:[B@59f5f63c
