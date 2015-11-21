@@ -127,7 +127,8 @@ public class GUI_Registration extends javax.swing.JFrame {
                 if (Arrays.equals(jPasswordField3.getPassword(), jPasswordField2.getPassword())){
                     MyResult tmp = Registration.registracia(jTextField1.getText(), String.valueOf(jPasswordField2.getPassword()));
                     if (!tmp.getFirst())
-                        JOptionPane.showMessageDialog(rootPane, tmp.getSecond());
+                       // JOptionPane.showMessageDialog(rootPane, tmp.getSecond());
+                        JOptionPane.showMessageDialog(rootPane, "Heslo musi obsahovat velke pismeno, cislicu a male pismeno");
                     else
                     {
                         JOptionPane.showMessageDialog(rootPane, "Registracia prebehla uspesne.");

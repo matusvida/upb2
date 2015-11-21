@@ -11,6 +11,9 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.StringTokenizer;
+import java.util.Timer;
+import java.util.concurrent.Delayed;
+import java.util.concurrent.TimeUnit;
 
 import security.Database;
 import security.Database.MyResult;
@@ -20,8 +23,16 @@ public class Login {
         /*
         *   Delay je vhodne vytvorit este pred kontolou prihlasovacieho mena.
         */
+        Timer timer = new Timer();
+
         MyResult account = Database.find("hesla.txt", meno);
         if (!account.getFirst()){
+            try{
+
+            }
+            catch(Exception e){
+                System.out.println("chybny timer");
+            }
             return new MyResult(false, "Nespravne meno.");
         }
         else {

@@ -22,10 +22,36 @@ public class Registration {
             /*
             *   Salt sa obvykle uklada ako tretia polozka v tvare [meno]:[heslo]:[salt].
             */
+
+            if(passwordValidation(heslo)==false){
+              return new MyResult(false, "");
+            }
             byte[] salt = new byte[32];
             Database.add("hesla.txt", meno, heslo, salt.toString());
         }
         return new MyResult(true, "");
+    }
+
+    protected static boolean passwordValidation(String password){
+        boolean lowerCase = false;
+        boolean upperCase = false;
+        boolean digit = false;
+        boolean result = false;
+        for (int i=0; i<password.length(); i++){
+            if(Character.isUpperCase(password.charAt(i))){
+                upperCase = true;
+            }
+            if(Character.isDigit(password.charAt(i))){
+                digit = true;
+            }
+            if(Character.isLowerCase(password.charAt(i))){
+                lowerCase = true;
+            }
+        }
+        if(lowerCase && upperCase && digit){
+            result = true;
+        }
+        return result;
     }
     
 }
