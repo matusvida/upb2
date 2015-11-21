@@ -4,10 +4,8 @@ import java.awt.Dimension;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JEditorPane;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
+import javax.swing.*;
+
 import security.Database.MyResult;
 
 
@@ -299,7 +297,13 @@ public class GUI extends javax.swing.JFrame {
                     jPasswordField2.setText(null);
                 }
                 else
-                   jPasswordField2.setText(null);
+                   //jPasswordField2.setText(null);
+                    jTextField1.setEnabled(false);
+                    jPasswordField2.setEnabled(false);
+                    JOptionPane.showMessageDialog(rootPane, "Dalsie prihlasenie bude mozne o 2 sekundy");
+                    Thread.sleep(2000);
+                    jTextField1.setEnabled(true);
+                    jPasswordField2.setEnabled(true);
                 }
             } catch (Exception ex) {
                 Logger.getLogger(GUI.class.getName()).log(Level.SEVERE, null, ex);

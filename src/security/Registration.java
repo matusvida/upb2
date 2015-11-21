@@ -36,7 +36,9 @@ public class Registration {
         boolean lowerCase = false;
         boolean upperCase = false;
         boolean digit = false;
+        boolean length = false;
         boolean result = false;
+        int intLength = 0;
         for (int i=0; i<password.length(); i++){
             if(Character.isUpperCase(password.charAt(i))){
                 upperCase = true;
@@ -47,8 +49,11 @@ public class Registration {
             if(Character.isLowerCase(password.charAt(i))){
                 lowerCase = true;
             }
+            if(i+1 >= 8){
+                length = true;
+            }
         }
-        if(lowerCase && upperCase && digit){
+        if(lowerCase && upperCase && digit && length){
             result = true;
         }
         return result;

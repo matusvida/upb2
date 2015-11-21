@@ -23,16 +23,9 @@ public class Login {
         /*
         *   Delay je vhodne vytvorit este pred kontolou prihlasovacieho mena.
         */
-        Timer timer = new Timer();
 
         MyResult account = Database.find("hesla.txt", meno);
         if (!account.getFirst()){
-            try{
-
-            }
-            catch(Exception e){
-                System.out.println("chybny timer");
-            }
             return new MyResult(false, "Nespravne meno.");
         }
         else {
